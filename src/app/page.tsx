@@ -51,6 +51,7 @@ export default function Home() {
   const [widgetRpContext, setWidgetRpContext] = useState<RpContext | null>(null);
   const [widgetError, setWidgetError] = useState<string | null>(null);
   const [widgetIdkitResult, setWidgetIdkitResult] = useState<IDKitResult | null>(null);
+  const [verifyResponse, setVerifyResponse] = useState<unknown>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [countdown, setCountdown] = useState<number | null>(3);
   const hasStarted = useRef(false);
@@ -58,6 +59,7 @@ export default function Home() {
   async function startWidgetFlow() {
     setWidgetError(null);
     setWidgetIdkitResult(null);
+    setVerifyResponse(null);
     setIsLoading(true);
     try {
       const rpContext = await fetchRpContext(ACTION);
@@ -111,6 +113,24 @@ export default function Home() {
           </p>
         )}
 
+        {widgetIdkitResult && (
+          <details className="w-full text-left">
+            <summary className="text-sm text-zinc-500 cursor-pointer">IDKit Response</summary>
+            <pre className="mt-2 text-xs font-mono bg-zinc-100 dark:bg-zinc-900 p-3 rounded overflow-x-auto whitespace-pre-wrap break-all">
+              {JSON.stringify(widgetIdkitResult, null, 2)}
+            </pre>
+          </details>
+        )}
+
+        {verifyResponse !== null && (
+          <details className="w-full text-left" open>
+            <summary className="text-sm text-zinc-500 cursor-pointer">Verify API Response</summary>
+            <pre className="mt-2 text-xs font-mono bg-zinc-100 dark:bg-zinc-900 p-3 rounded overflow-x-auto whitespace-pre-wrap break-all">
+              {JSON.stringify(verifyResponse, null, 2)}
+            </pre>
+          </details>
+        )}
+
         {widgetError && (
           <p className="text-red-600 text-base">
             Verification failed{" "}
@@ -128,7 +148,8 @@ export default function Home() {
             allow_legacy_proofs={true}
             preset={selfieCheckLegacy({ signal: "selfie-test" })}
             handleVerify={async (result) => {
-              await verifyProof(result);
+              const verified = await verifyProof(result);
+              setVerifyResponse(verified);
             }}
             onSuccess={(result) => {
               setWidgetIdkitResult(result);
