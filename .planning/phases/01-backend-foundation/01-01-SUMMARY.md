@@ -66,7 +66,7 @@ completed: 2026-04-29
 - **Duration:** 6 min
 - **Started:** 2026-04-29T03:22:29Z
 - **Completed:** 2026-04-29T03:28:18Z
-- **Tasks:** 2 of 3 complete (Task 3 is checkpoint awaiting Vercel auth)
+- **Tasks:** 3 of 3 complete
 - **Files modified:** 20
 
 ## Accomplishments
@@ -83,9 +83,9 @@ Each task was committed atomically:
 
 1. **Task 1: Scaffold Next.js project and configure environment** - `a59b567` (feat)
 2. **Task 2: Create both API routes and verify with curl** - `4c74938` (feat)
-3. **Task 3: Verify Vercel deployment (INFRA-02)** - Awaiting checkpoint (human auth required)
+3. **Task 3: Verify Vercel deployment (INFRA-02)** - Checkpoint resolved (Vercel deployment confirmed working)
 
-**Plan metadata:** (pending final commit)
+**Plan metadata:** (final commit pending)
 
 ## Files Created/Modified
 - `src/app/api/rp-signature/route.ts` - RP signature generation endpoint using signRequest
@@ -133,29 +133,23 @@ Each task was committed atomically:
 
 ## Auth Gates
 
-**Task 3: Vercel deployment** required Vercel CLI authentication. Attempted `npx vercel whoami` which showed "No existing credentials found. Starting login flow..." with a device auth URL. This is a first-time setup requiring user login at `https://vercel.com/oauth/device?user_code=ZBLG-GCVG`. Task 3 remains as a checkpoint for user to complete Vercel authentication and deployment.
+**Task 3: Vercel deployment** required Vercel CLI authentication and manual dashboard setup. The user completed Vercel login, linked the project, configured all env vars in the Vercel dashboard, and deployed. Deployment was verified:
+- Root URL https://selfie-test-chi.vercel.app/ returns HTTP 200
+- POST https://selfie-test-chi.vercel.app/api/rp-signature returns valid signed rp_context JSON with sig, nonce, created_at, expires_at fields
 
-## User Setup Required
+## User Setup Completed
 
-**Vercel deployment (Task 3) requires manual authentication:**
-
-1. Run: `cd /home/murph/src/personal/selfie-test && npx vercel login`
-2. Follow the browser auth flow at the URL provided
-3. Once authenticated, run: `npx vercel --prod`
-4. When prompted, link to project: accept defaults for Next.js detection
-5. Add env vars in Vercel dashboard (Settings > Environment Variables):
-   - `RP_SIGNING_KEY` = `0x5a740420eeea717300a714d9db73a1faf8be98eccb2c8a6739226da631754286`
-   - `DEV_PORTAL_BASE_URL` = `https://developer.world.org`
-   - `NEXT_PUBLIC_APP_ID` = `app_4c0f2b7ac8e5f61b994ff642c8670c62`
-   - `NEXT_PUBLIC_RP_ID` = `rp_af321e6c2016688e`
-6. Redeploy after adding env vars
-7. Verify: `curl -s -o /dev/null -w "%{http_code}" https://YOUR-VERCEL-URL.vercel.app` returns 200
+Vercel deployment completed by user:
+- Project deployed at: https://selfie-test-chi.vercel.app/
+- Env vars configured in Vercel dashboard: RP_SIGNING_KEY, DEV_PORTAL_BASE_URL, NEXT_PUBLIC_APP_ID, NEXT_PUBLIC_RP_ID
+- Both root path (200) and rp-signature endpoint verified on deployed URL
 
 ## Next Phase Readiness
-- Backend API routes are curl-verified and ready for Phase 2 frontend integration
+- Backend API routes are curl-verified locally and verified on Vercel production
 - Both endpoints behave correctly with valid input and return proper JSON
-- Vercel deployment pending user authentication (Task 3 checkpoint)
-- Once deployed, Phase 2 can reference the deployed URL for IDKit widget configuration
+- Deployed URL: https://selfie-test-chi.vercel.app/ (all env vars configured)
+- Phase 2 can reference the deployed URL for IDKit widget configuration
+- INFRA-02 (Vercel deployment) confirmed complete
 
 ---
 *Phase: 01-backend-foundation*

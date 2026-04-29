@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 01-01-PLAN.md Tasks 1+2; Task 3 (Vercel deploy) is checkpoint awaiting user auth
-last_updated: "2026-04-29T03:29:36.706Z"
+stopped_at: Completed 01-01-PLAN.md (all 3 tasks including Vercel deployment)
+last_updated: "2026-04-29T03:55:36.345Z"
 last_activity: 2026-04-28 — Roadmap created
 progress:
   total_phases: 2
@@ -51,6 +51,7 @@ Progress: [██████████] 100%
 
 *Updated after each plan completion*
 | Phase 01-backend-foundation P01 | 6 | 2 tasks | 20 files |
+| Phase 01-backend-foundation P01 | ~90min (including Vercel checkpoint) | 3 tasks | 20 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,7 @@ Recent decisions affecting current work:
 - [Phase 01-backend-foundation]: Added .npmrc to redirect @worldcoin scope to npmjs.org (overrides ~/.npmrc GitHub Package Registry routing)
 - [Phase 01-backend-foundation]: signRequest imports from @worldcoin/idkit/signing (not idkit-core); confirmed official import path
 - [Phase 01-backend-foundation]: No export const runtime = 'edge' on signing route — Node.js default runtime required for crypto
+- [Phase 01-backend-foundation]: Vercel deployment at https://selfie-test-chi.vercel.app/ — all env vars configured in dashboard, INFRA-02 complete
 
 ### Pending Todos
 
@@ -78,6 +80,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-29T03:29:36.703Z
-Stopped at: Completed 01-01-PLAN.md Tasks 1+2; Task 3 (Vercel deploy) is checkpoint awaiting user auth
+Last session: 2026-04-29T03:55:36.343Z
+Stopped at: Completed 01-01-PLAN.md (all 3 tasks including Vercel deployment)
 Resume file: None
