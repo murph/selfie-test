@@ -26,7 +26,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. `curl -X POST /api/verify-proof` forwards a proof payload to `developer.world.org/api/v4/verify/{rp_id}` and returns the upstream response
   3. `RP_SIGNING_KEY` env var is consumed only server-side — it does not appear in any client bundle or `NEXT_PUBLIC_` variable
   4. `vercel deploy` succeeds and the deployed URL returns a 200 on the root path
-**Plans**: TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] 01-01-PLAN.md — Scaffold Next.js, configure env vars, create both API routes
 
 ### Phase 2: Widget Integration
 **Goal**: A user can open the page, scan the QR code, complete Selfie Check in World App, and see a result on screen
@@ -41,9 +44,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2
+Phases execute in numeric order: 1 -> 2
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Backend Foundation | 0/TBD | Not started | - |
+| 1. Backend Foundation | 0/1 | Not started | - |
 | 2. Widget Integration | 0/TBD | Not started | - |
