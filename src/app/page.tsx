@@ -107,11 +107,20 @@ export default function Home() {
               : "Start Verification"}
         </button>
 
-        {widgetIdkitResult && (
-          <p className="text-green-600 text-base">
-            Success! Thanks for your help testing Selfie Check. Comments? #world-id-dogfood-feedback
-          </p>
-        )}
+        {widgetIdkitResult && (() => {
+          const hasOrb = JSON.stringify(verifyResponse).includes('"orb"') ||
+            JSON.stringify(widgetIdkitResult).includes('"orb"');
+          return (
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-green-600 text-base">
+                Success! You are Selfie Check {hasOrb ? "(and Orb)" : "(but not Orb)"} verified.
+              </p>
+              <p className="text-zinc-500 text-sm">
+                Comments? #world-id-dogfood-feedback
+              </p>
+            </div>
+          );
+        })()}
 
         {widgetIdkitResult && (
           <details className="w-full text-left">
@@ -123,7 +132,7 @@ export default function Home() {
         )}
 
         {verifyResponse !== null && (
-          <details className="w-full text-left" open>
+          <details className="w-full text-left">
             <summary className="text-sm text-zinc-500 cursor-pointer">Verify API Response</summary>
             <pre className="mt-2 text-xs font-mono bg-zinc-100 dark:bg-zinc-900 p-3 rounded overflow-x-auto whitespace-pre-wrap break-all">
               {JSON.stringify(verifyResponse, null, 2)}
