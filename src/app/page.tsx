@@ -106,7 +106,9 @@ export default function Home() {
         </button>
 
         {widgetIdkitResult && (
-          <p className="text-green-600 text-base">Verified!</p>
+          <p className="text-green-600 text-base">
+            Success! Thanks for your help testing Selfie Check. Comments? #world-id-dogfood-feedback
+          </p>
         )}
 
         {widgetError && (
