@@ -13,7 +13,7 @@ Two phases deliver the complete test harness. Phase 1 establishes the Next.js pr
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Backend Foundation** - Next.js scaffold + both API routes, curl-testable (completed 2026-04-29)
-- [ ] **Phase 2: Widget Integration** - IDKit QR widget wired to routes with success/error display
+- [x] **Phase 2: Widget Integration** - IDKit QR widget wired to routes with success/error display (completed 2026-04-29)
 
 ## Phase Details
 
@@ -39,7 +39,7 @@ Plans:
   1. Visiting the page displays the IDKit `IDKitRequestWidget` QR code using the `selfieCheckLegacy` preset
   2. After a successful Selfie Check scan, the page shows a "Verified!" message
   3. After a failed or rejected verification, the page displays an error state including the IDKit error code
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 
 Plans:
 - [ ] 02-01-PLAN.md — Rewrite page.tsx with IDKit widget integration and verify live Selfie Check flow
@@ -52,4 +52,4 @@ Phases execute in numeric order: 1 -> 2
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Backend Foundation | 1/1 | Complete    | 2026-04-29 |
-| 2. Widget Integration | 0/1 | Planning complete | - |
+| 2. Widget Integration | 1/1 | Complete   | 2026-04-29 |

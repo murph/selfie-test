@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 01-01-PLAN.md (all 3 tasks including Vercel deployment)
-last_updated: "2026-04-29T03:57:55.134Z"
+stopped_at: Completed 02-01 Task 1; awaiting human verification checkpoint (Task 2)
+last_updated: "2026-04-29T04:15:30.126Z"
 last_activity: 2026-04-28 — Roadmap created
 progress:
   total_phases: 2
-  completed_phases: 1
-  total_plans: 1
-  completed_plans: 1
+  completed_phases: 2
+  total_plans: 2
+  completed_plans: 2
   percent: 100
 ---
 
@@ -52,6 +52,7 @@ Progress: [██████████] 100%
 *Updated after each plan completion*
 | Phase 01-backend-foundation P01 | 6 | 2 tasks | 20 files |
 | Phase 01-backend-foundation P01 | ~90min (including Vercel checkpoint) | 3 tasks | 20 files |
+| Phase 02-widget-integration P01 | 10min | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -68,6 +69,9 @@ Recent decisions affecting current work:
 - [Phase 01-backend-foundation]: signRequest imports from @worldcoin/idkit/signing (not idkit-core); confirmed official import path
 - [Phase 01-backend-foundation]: No export const runtime = 'edge' on signing route — Node.js default runtime required for crypto
 - [Phase 01-backend-foundation]: Vercel deployment at https://selfie-test-chi.vercel.app/ — all env vars configured in dashboard, INFRA-02 complete
+- [Phase 02-widget-integration]: Fetch rp_context on button click not page load — prevents expiry before World App scan
+- [Phase 02-widget-integration]: verifyProof throws on failure (not returns) so IDKit treats resolved promise as success
+- [Phase 02-widget-integration]: selfieCheckLegacy preset with allow_legacy_proofs=true required for Selfie Check flow
 
 ### Pending Todos
 
@@ -80,6 +84,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-29T03:55:36.343Z
-Stopped at: Completed 01-01-PLAN.md (all 3 tasks including Vercel deployment)
+Last session: 2026-04-29T04:15:30.123Z
+Stopped at: Completed 02-01 Task 1; awaiting human verification checkpoint (Task 2)
 Resume file: None

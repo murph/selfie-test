@@ -10,9 +10,9 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Core Integration
 
 - [x] **CORE-01**: Server generates RP signature (`rp_context`) via `/api/rp-signature` POST route using `signRequest` from `@worldcoin/idkit/signing`
-- [ ] **CORE-02**: Page displays IDKit Selfie Check QR code using `IDKitRequestWidget` with `selfieCheckLegacy` preset
+- [x] **CORE-02**: Page displays IDKit Selfie Check QR code using `IDKitRequestWidget` with `selfieCheckLegacy` preset
 - [x] **CORE-03**: Server verifies proof via `/api/verify-proof` POST route forwarding payload to `developer.world.org/api/v4/verify/{rp_id}`
-- [ ] **CORE-04**: Page shows "Verified!" message on successful Selfie Check completion
+- [x] **CORE-04**: Page shows "Verified!" message on successful Selfie Check completion
 
 ### Infrastructure
 
@@ -21,7 +21,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Error Handling
 
-- [ ] **ERR-01**: Page displays error state with IDKit error code when verification fails
+- [x] **ERR-01**: Page displays error state with IDKit error code when verification fails
 
 ## v2 Requirements
 
@@ -50,12 +50,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | CORE-01 | Phase 1 | Complete |
-| CORE-02 | Phase 2 | Pending |
+| CORE-02 | Phase 2 | Complete |
 | CORE-03 | Phase 1 | Complete |
-| CORE-04 | Phase 2 | Pending |
+| CORE-04 | Phase 2 | Complete |
 | INFRA-01 | Phase 1 | Complete |
 | INFRA-02 | Phase 1 | Complete |
-| ERR-01 | Phase 2 | Pending |
+| ERR-01 | Phase 2 | Complete |
 
 **Coverage:**
 - v1 requirements: 7 total
