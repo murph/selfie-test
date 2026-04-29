@@ -116,7 +116,7 @@ export default function Home() {
                 Success! You are Selfie Check {hasOrb ? "(and Orb)" : "(but not Orb)"} verified.
               </p>
               <p className="text-zinc-500 text-sm">
-                Comments? #world-id-dogfood-feedback
+                Comments? #face-check-user-testing-feedback
               </p>
             </div>
           );
