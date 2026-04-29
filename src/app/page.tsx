@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { IDKitRequestWidget, selfieCheckLegacy } from "@worldcoin/idkit";
 import type { IDKitResult, RpContext } from "@worldcoin/idkit";
 
@@ -52,6 +52,8 @@ export default function Home() {
   const [widgetError, setWidgetError] = useState<string | null>(null);
   const [widgetIdkitResult, setWidgetIdkitResult] = useState<IDKitResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [countdown, setCountdown] = useState<number | null>(3);
+  const hasStarted = useRef(false);
 
   async function startWidgetFlow() {
     setWidgetError(null);
@@ -68,17 +70,39 @@ export default function Home() {
     }
   }
 
+  useEffect(() => {
+    if (hasStarted.current) return;
+    hasStarted.current = true;
+    let count = 3;
+    setCountdown(count);
+    const interval = setInterval(() => {
+      count -= 1;
+      if (count <= 0) {
+        clearInterval(interval);
+        setCountdown(null);
+        startWidgetFlow();
+      } else {
+        setCountdown(count);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-zinc-950">
       <div className="flex flex-col items-center gap-4 text-center max-w-sm w-full px-4">
-        <h1 className="text-2xl font-semibold">Selfie Test Tester</h1>
+        <h1 className="text-2xl font-semibold">Selfie Check Tester</h1>
 
         <button
           onClick={startWidgetFlow}
-          disabled={isLoading || widgetOpen}
+          disabled={isLoading || widgetOpen || countdown !== null}
           className="min-h-[44px] py-2 px-6 rounded-full bg-zinc-900 text-white text-sm font-semibold transition-colors hover:bg-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
         >
-          {isLoading ? "Loading..." : "Start Verification"}
+          {countdown !== null
+            ? `Starting in ${countdown}...`
+            : isLoading
+              ? "Loading..."
+              : "Start Verification"}
         </button>
 
         {widgetIdkitResult && (
