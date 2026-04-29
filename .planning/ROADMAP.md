@@ -29,7 +29,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 1/1 plans complete
 
 Plans:
-- [ ] 01-01-PLAN.md — Scaffold Next.js, configure env vars, create both API routes
+- [x] 01-01-PLAN.md — Scaffold Next.js, configure env vars, create both API routes
 
 ### Phase 2: Widget Integration
 **Goal**: A user can open the page, scan the QR code, complete Selfie Check in World App, and see a result on screen
@@ -39,7 +39,10 @@ Plans:
   1. Visiting the page displays the IDKit `IDKitRequestWidget` QR code using the `selfieCheckLegacy` preset
   2. After a successful Selfie Check scan, the page shows a "Verified!" message
   3. After a failed or rejected verification, the page displays an error state including the IDKit error code
-**Plans**: TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] 02-01-PLAN.md — Rewrite page.tsx with IDKit widget integration and verify live Selfie Check flow
 
 ## Progress
 
@@ -49,4 +52,4 @@ Phases execute in numeric order: 1 -> 2
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Backend Foundation | 1/1 | Complete    | 2026-04-29 |
-| 2. Widget Integration | 0/TBD | Not started | - |
+| 2. Widget Integration | 0/1 | Planning complete | - |
