@@ -12,7 +12,7 @@ Two phases deliver the complete test harness. Phase 1 establishes the Next.js pr
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Backend Foundation** - Next.js scaffold + both API routes, curl-testable
+- [x] **Phase 1: Backend Foundation** - Next.js scaffold + both API routes, curl-testable (completed 2026-04-29)
 - [ ] **Phase 2: Widget Integration** - IDKit QR widget wired to routes with success/error display
 
 ## Phase Details
@@ -26,7 +26,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. `curl -X POST /api/verify-proof` forwards a proof payload to `developer.world.org/api/v4/verify/{rp_id}` and returns the upstream response
   3. `RP_SIGNING_KEY` env var is consumed only server-side — it does not appear in any client bundle or `NEXT_PUBLIC_` variable
   4. `vercel deploy` succeeds and the deployed URL returns a 200 on the root path
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 
 Plans:
 - [ ] 01-01-PLAN.md — Scaffold Next.js, configure env vars, create both API routes
@@ -48,5 +48,5 @@ Phases execute in numeric order: 1 -> 2
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Backend Foundation | 0/1 | Not started | - |
+| 1. Backend Foundation | 1/1 | Complete   | 2026-04-29 |
 | 2. Widget Integration | 0/TBD | Not started | - |
