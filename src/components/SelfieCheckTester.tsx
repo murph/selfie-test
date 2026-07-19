@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { IDKitRequestWidget, selfieCheckLegacy } from "@worldcoin/idkit";
 import type { IDKitResult, RpContext } from "@worldcoin/idkit";
-import { EnvironmentLogo } from "./EnvironmentLogo";
+import { EnvironmentLogo, GRADIENTS } from "./EnvironmentLogo";
 
 const APP_ID = process.env.NEXT_PUBLIC_APP_ID as `app_${string}`;
 const RP_ID = process.env.NEXT_PUBLIC_RP_ID as string;
@@ -96,6 +96,36 @@ export default function SelfieCheckTester({
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  // Recolor the World logo inside the IDKit widget to match the environment
+  // flavor. IDKit renders into an open shadow root on document.body and offers
+  // no branding config, so we inject a stylesheet into it whenever one appears.
+  // Relies on idkit internals (data-idkit-shadow-host, .idkit-worldid-icon);
+  // harmless no-op if those change — the widget just keeps its default logo.
+  useEffect(() => {
+    if (environment === "production") return;
+    const [start, end] = GRADIENTS[environment];
+    const brandShadowRoots = () => {
+      document.querySelectorAll("[data-idkit-shadow-host]").forEach((host) => {
+        const root = host.shadowRoot;
+        if (!root || root.querySelector("style[data-env-brand]")) return;
+        const style = document.createElement("style");
+        style.setAttribute("data-env-brand", environment);
+        style.textContent = `
+          .idkit-worldid-icon {
+            background: linear-gradient(180deg, ${start}, ${end}) !important;
+            border: none !important;
+          }
+          .idkit-worldid-icon svg { color: #ffffff !important; }
+        `;
+        root.appendChild(style);
+      });
+    };
+    brandShadowRoots();
+    const observer = new MutationObserver(brandShadowRoots);
+    observer.observe(document.body, { childList: true });
+    return () => observer.disconnect();
+  }, [environment]);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-zinc-950">

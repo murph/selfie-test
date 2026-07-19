@@ -1,6 +1,6 @@
 // Recreated from the staging/sandbox flavor launcher icons in wld-android
 // (app/src/{staging,sandbox}/res/drawable/ic_launcher_foreground.xml + ic_launcher_background.xml)
-const GRADIENTS = {
+export const GRADIENTS = {
   staging: ["#18BDFB", "#2073F3"],
   sandbox: ["#9B18FB", "#6020F3"],
 } as const;
